@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.bertblommers.moto</groupId>
   <artifactId>partiql.s3.client</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2</version>
   <name>PartiQL</name>
   <description>PartiQL client to easily access load S3 data and run queries</description>
   <properties>
@@ -38,6 +38,7 @@
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
+          <attach>false</attach>
           <archive>
             <manifest>
               <mainClass>partiql.s3.client.PartiQLClient</mainClass>
@@ -47,9 +48,30 @@
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
         </configuration>
+        <executions>
+            <execution>
+                <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                <phase>package</phase> <!--  bind to the packaging phase -->
+                <goals>
+                    <goal>single</goal>
+                </goals>
+            </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
-  
-  
+
+  <distributionManagement>
+   <repository>
+     <id>github</id>
+     <name>GitHub bblommers Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/bblommers/partiql-docker</url>
+   </repository>
+   <snapshotRepository>
+     <id>github</id>
+     <name>GitHub bblommers Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/bblommers/partiql-docker</url>
+   </snapshotRepository>
+  </distributionManagement>
+
 </project>
