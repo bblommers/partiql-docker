@@ -13,6 +13,6 @@ RUN ls -la /tmp/partiqldata
 
 
 FROM gcr.io/distroless/java
-COPY --from=build /tmp/partiql/target/partiql.s3.client-0.0.2-jar-with-dependencies.jar /tmp/partiql/client.jar
+COPY --from=build /tmp/partiql/target/partiql.s3.client-*-jar-with-dependencies.jar /tmp/partiql/client.jar
 COPY --from=build /tmp/partiqldata/${SRC} /tmp/partiqldata/${SRC}
 ENTRYPOINT ["java","-jar","/tmp/partiql/client.jar"]

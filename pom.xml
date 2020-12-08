@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.bertblommers.moto</groupId>
   <artifactId>partiql.s3.client</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.5</version>
   <name>PartiQL</name>
   <description>PartiQL client to easily access load S3 data and run queries</description>
   <properties>
@@ -32,13 +32,12 @@
         <version>${kotlin.version}</version>
     </dependency>
   </dependencies>
-  
+
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
-          <attach>false</attach>
           <archive>
             <manifest>
               <mainClass>partiql.s3.client.PartiQLClient</mainClass>
@@ -58,6 +57,16 @@
             </execution>
         </executions>
       </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+            <execution>
+              <id>default-jar</id>
+              <phase>none</phase>
+            </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -67,11 +76,6 @@
      <name>GitHub bblommers Apache Maven Packages</name>
      <url>https://maven.pkg.github.com/bblommers/partiql-docker</url>
    </repository>
-   <snapshotRepository>
-     <id>github</id>
-     <name>GitHub bblommers Apache Maven Packages</name>
-     <url>https://maven.pkg.github.com/bblommers/partiql-docker</url>
-   </snapshotRepository>
   </distributionManagement>
 
 </project>
